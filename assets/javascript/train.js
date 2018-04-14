@@ -54,4 +54,22 @@ $("#addTrainBtn").on("click", function () {
   var minUntilTrain = frequency - remainder;
   var nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm a");
 
-  
+  var newTrain = {
+    name: trainName,
+    destination: destination,
+    firstTrain: firstTrain,
+    frequency: frequency,
+    min: minUntilTrain,
+    next: nextTrain
+  }
+
+  console.log(newTrain);
+  database.ref().push(newTrain);
+
+  $("#trainNameInput").val("");
+  $("#destinationInput").val("");
+  $("#firstInput").val("");
+  $("#frequencyInput").val("");
+
+  return false;
+});
