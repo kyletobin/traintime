@@ -47,3 +47,11 @@ $("#addTrainBtn").on("click", function () {
     alert('Enter a frequency');
     return false;
   }
+
+  var firstTrainConverted = moment(firstTrain, "hh:mm").subtract("1, years");
+  var difference = currentTime.diff(moment(firstTrainConverted), "minutes");
+  var remainder = difference % frequency;
+  var minUntilTrain = frequency - remainder;
+  var nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm a");
+
+  
